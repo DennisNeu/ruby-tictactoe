@@ -28,7 +28,7 @@ class Gameboard
     row = determine_row(cell_index)
     cell = determine_cell(cell_index)
 
-    raise 'Cell is not empty!' unless board[row][cell] != ' '
+    raise 'Cell is not empty!' unless @board[row][cell] == ' '
 
     @board[row][cell] = player
   end
