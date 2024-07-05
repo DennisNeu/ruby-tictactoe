@@ -6,11 +6,16 @@ class Gameboard
   end
 
   def draw_board
-    board.each do |row|
-      row.each do |column|
-        puts "#{column} |"
+    @board.each_with_index do |row, row_index|
+      row.each_with_index do |cell, cell_index|
+        if cell_index == row.length - 1
+          print cell
+        else
+          print cell + ' | '
+        end
       end
+      print "\n"
+      puts '-' * 9 unless row_index == @board.length - 1
     end
-    puts "___________"
   end
 end
