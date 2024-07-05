@@ -20,10 +20,7 @@ class Gameboard
   end
 
   def update_board(player, cell_index)
-    if player != 'x' && player != 'o'
-      puts 'Player can only be x or o'
-      return
-    end
+    raise 'Invalid player' unless player == 'x' || player == 'o'
 
     row = determine_row(cell_index)
     cell = determine_cell(cell_index)
