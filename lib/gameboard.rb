@@ -28,21 +28,22 @@ class Gameboard
     row = determine_row(cell_index)
     cell = determine_cell(cell_index)
 
-    raise "Cell is not empty!" unless board[row][cell] != ' '
+    raise 'Cell is not empty!' unless board[row][cell] != ' '
+
     @board[row][cell] = player
   end
 
   private
 
   def determine_row(cell_index)
-    raise 'Invalid cell index' unless cell_index.between?(0,8)
+    raise 'Invalid cell index' unless cell_index.between?(0, 8)
 
-    row = cell_index / 3
+    cell_index / 3
   end
 
   def determine_cell(cell_index)
-    raise 'Invalid cell index' unless cell_index.between?(0,8)
+    raise 'Invalid cell index' unless cell_index.between?(0, 8)
 
-    cell_index %= 3
+    cell_index % 3
   end
 end
