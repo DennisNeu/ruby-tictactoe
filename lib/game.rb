@@ -20,6 +20,7 @@ class Game
         puts "Cell is already taken"
         @gameboard.update_board(@player1.symbol, @player1.get_player_choice)
       end
+      puts check_victory(@player1.symbol)
       @gameboard.draw_board
       if check_full_board
         end_game("full")
@@ -30,7 +31,7 @@ class Game
         puts "Cell is already taken"
         @gameboard.update_board(@player2.symbol, @player2.get_player_choice)
       end
-
+      puts check_victory(@player2.symbol)
     end
   end
 
@@ -43,7 +44,17 @@ class Game
   end
 
   def check_victory(player_symbol)
-    @gameboard.board.each
+    # Row
+    @gameboard.board.each do |row|
+      return true if row.all?(player_symbol)
+    end
+    # Column
+    return true if @gameboard.board[0][0] == player_symbol && @gameboard.board[1][0] == player_symbol && @gameboard.board[2][0] == player_symbol
+    return true if @gameboard.board[0][1] == player_symbol && @gameboard.board[1][1] == player_symbol && @gameboard.board[2][1] == player_symbol
+    return true if @gameboard.board[0][2] == player_symbol && @gameboard.board[1][2] == player_symbol && @gameboard.board[2][2] == player_symbol
+    # Diagonals
+    return true if @gameboard.board[0][0] == player_symbol && @gameboard.board[1][1] == player_symbol && @gameboard.board[2][2] == player_symbol
+    return true if @gameboard.board[0][2] == player_symbol && @gameboard.board[1][1] == player_symbol && @gameboard.board[2][0] == player_symbol
   end
 
   def check_full_board
