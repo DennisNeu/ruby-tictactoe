@@ -1,4 +1,4 @@
-require_relative "lib/gameboard"
+require_relative "lib/game"
 
 gameboard = Gameboard.new
 

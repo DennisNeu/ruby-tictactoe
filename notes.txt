@@ -1,0 +1,17 @@
+Classes:
+    game
+    gameboard
+    player
+
+game:
+    handle gameloop
+    handle input (sanatize input?)
+    check win condition
+    restart game
+
+gameboard:
+    draw gameboard
+    update gameboard
+
+player:
+    store player symbol
