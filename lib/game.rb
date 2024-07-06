@@ -50,7 +50,7 @@ class Game
         break
       end
     end
-
+    restart_game
   end
 
   private
@@ -63,6 +63,13 @@ class Game
     puts ""
     puts "#" * 9
     puts ""
+  end
+
+  def restart_game
+    puts "Hit enter to restart"
+    gets
+    @gameboard.board = @gameboard.set_board
+    run_game
   end
 
   def end_game(param)
