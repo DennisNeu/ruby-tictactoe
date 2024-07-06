@@ -19,7 +19,7 @@ class Player
 
     end while number.nil? || number < 1 || number > 9
 
-    number
+    number - 1
 
   end
 end

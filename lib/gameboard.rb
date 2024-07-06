@@ -2,7 +2,7 @@ class Gameboard
   attr_accessor :board
 
   def initialize
-    @board = Array.new(3) { Array.new(3, ' ') }
+    @board = set_board
   end
 
   def draw_board
@@ -20,14 +20,16 @@ class Gameboard
   end
 
   def update_board(player, cell_index)
-    raise 'Invalid player' unless player == 'x' || player == 'o'
-
     row = determine_row(cell_index)
     cell = determine_cell(cell_index)
 
     raise 'Cell is not empty!' unless @board[row][cell] == ' '
 
     @board[row][cell] = player
+  end
+
+  def set_board
+    Array.new(3) { Array.new(3, ' ') }
   end
 
   private
