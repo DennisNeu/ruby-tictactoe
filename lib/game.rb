@@ -9,33 +9,61 @@ class Game
   end
 
   def run_game
+    @gameboard.draw_board
     while true
-      @gameboard.draw_board
+
       if check_full_board
         end_game("full")
       end
+
       begin
         @gameboard.update_board(@player1.symbol, @player1.get_player_choice)
       rescue
         puts "Cell is already taken"
         @gameboard.update_board(@player1.symbol, @player1.get_player_choice)
       end
-      puts check_victory(@player1.symbol)
+
       @gameboard.draw_board
+
+
+      if check_victory(@player1.symbol)
+        print_victory(@player1.symbol)
+        break
+      end
+
       if check_full_board
         end_game("full")
+        break
       end
+
       begin
         @gameboard.update_board(@player2.symbol, @player2.get_player_choice)
       rescue
         puts "Cell is already taken"
         @gameboard.update_board(@player2.symbol, @player2.get_player_choice)
       end
-      puts check_victory(@player2.symbol)
+
+      @gameboard.draw_board
+
+      if check_victory(@player2.symbol)
+        print_victory(@player2.symbol)
+        break
+      end
     end
+
   end
 
   private
+
+  def print_victory(player_symbol)
+    puts ""
+    puts "#" * 9
+    puts ""
+    puts "Player: #{player_symbol} won!"
+    puts ""
+    puts "#" * 9
+    puts ""
+  end
 
   def end_game(param)
     if param == "full"
